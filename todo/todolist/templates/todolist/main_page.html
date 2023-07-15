@@ -1,0 +1,38 @@
+{% extends 'todolist/index.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+<style>
+div.a {
+	text-align: center;
+}
+</style>
+    <div class="a">
+        <h1>Все задания</h1>
+    </div>
+    <div class="a">
+        {% for todo in todo_list %}
+         <p class="list">
+             {% if todo.priority == 'Высокий' %}
+                 <font color="red">
+                 Задание: {{ todo.title }}
+                 </font>
+             {% else %}
+                <font color="green">
+                 Задание: {{ todo.title }}
+                 </font>
+             {% endif %}
+             <div>Описание: {{ todo.description }}</div>
+             <div>Время создания задачи: {{ todo.time_create }}</div>
+             <div>Дедлайн: {{ todo.deadline }}</div>
+             <div>Статус задания: {{ todo.status }}</div>
+             <div>Приоритет: {{ todo.priority }}</div>
+         </p>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
